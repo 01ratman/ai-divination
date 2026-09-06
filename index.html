@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>天机 · 命理推演</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ========== ① 开始页 ========== -->
+  <section id="page-start" class="page">
+    <div class="start-box">
+      <div class="brand-mark">
+        <canvas id="start-canvas" width="220" height="220"></canvas>
+      </div>
+      <h1 class="brand-title">天机 · 命理推演</h1>
+      <p class="brand-sub">参易理，观人生 · 八字 / 六爻 / 紫微</p>
+      <button id="btn-start" class="btn-primary btn-lg">开始算卦</button>
+    </div>
+  </section>
+
+  <!-- ========== ② 信息填写页 ========== -->
+  <section id="page-form" class="page hidden">
+    <div class="form-box">
+      <h2 class="form-title">填写出生信息</h2>
+      <form id="fortune-form" novalidate>
+
+        <div class="field">
+          <label for="region">出生省份 <span class="opt">(可选)</span></label>
+          <input id="region" list="region-list" placeholder="选择或输入省份" autocomplete="off" />
+          <datalist id="region-list"></datalist>
+          <small class="hint">用于校正真太阳时与方位分析</small>
+        </div>
+
+        <div class="field">
+          <label>出生日期 <span class="req">*</span></label>
+          <div class="select-row">
+            <select id="birth-year"></select>
+            <select id="birth-month"></select>
+            <select id="birth-day"></select>
+          </div>
+          <small class="hint">年 / 月 / 日</small>
+        </div>
+
+        <div class="field">
+          <label>出生时间</label>
+          <div class="select-row">
+            <select id="birth-hour"></select>
+            <select id="birth-min"></select>
+            <label class="unknown-box">
+              <input type="checkbox" id="time-unknown" /> 不记得
+            </label>
+          </div>
+          <small class="hint">若"不记得"，时柱将按假设处理并提示</small>
+        </div>
+
+        <div class="field">
+          <label for="gender">性别 <span class="req">*</span></label>
+          <select id="gender">
+            <option value="">请选择</option>
+            <option value="male">男</option>
+            <option value="female">女</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="btn-reset" class="btn-ghost">重置</button>
+          <button type="button" id="btn-divinate" class="btn-primary">开始占卜</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== ③ 推演动画页 ========== -->
+  <section id="page-animate" class="page hidden">
+    <div class="animate-box">
+      <canvas id="animate-canvas"></canvas>
+      <div class="animate-overlay">
+        <p id="animate-text" class="animate-text">正在起卦…</p>
+        <button id="btn-skip" class="btn-ghost">跳过动画</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ④ 卦象解读页 ========== -->
+  <section id="page-result" class="page hidden">
+    <div class="result-box">
+      <div class="result-head">
+        <div class="result-id" id="result-id"></div>
+        <div class="result-meta" id="result-meta"></div>
+        <p class="result-summary" id="result-summary"></p>
+      </div>
+
+      <nav class="tabs" id="result-tabs">
+        <button class="tab active" data-tab="overview">综合</button>
+        <button class="tab" data-tab="bazi">八字</button>
+        <button class="tab" data-tab="liuyao">六爻</button>
+        <button class="tab" data-tab="ziwei">紫微</button>
+        <button class="tab" data-tab="topics">主题</button>
+        <button class="tab" data-tab="classic">原文</button>
+      </nav>
+
+      <div class="tab-content" id="tab-overview"></div>
+      <div class="tab-content hidden" id="tab-bazi"></div>
+      <div class="tab-content hidden" id="tab-liuyao"></div>
+      <div class="tab-content hidden" id="tab-ziwei"></div>
+      <div class="tab-content hidden" id="tab-topics"></div>
+      <div class="tab-content hidden" id="tab-classic"></div>
+
+      <div class="result-actions">
+        <button id="btn-repick" class="btn-primary">重新占卜</button>
+        <button id="btn-recast" class="btn-ghost">换一种算法</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- ========== 脚本 ========== -->
+  <script src="data/regions.js"></script>
+  <script src="data/gender.js"></script>
+  <script src="data/shichen.js"></script>
+  <script src="data/tiangan.js"></script>
+  <script src="data/wuxing.js"></script>
+  <script src="data/topics.js"></script>
+  <script src="data/zhouyi.js"></script>
+  <script src="data/zhouyi2.js"></script>
+  <script src="data/ziwei.js"></script>
+
+  <script src="js/solar.js"></script>
+  <script src="js/bazi.js"></script>
+  <script src="js/ziwei.js"></script>
+  <script src="js/textEngine.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/canvas.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
