@@ -79,6 +79,7 @@ body {
   margin-bottom: 12px;
 }
 .brand-sub { color: var(--text-dim); letter-spacing: 3px; margin-bottom: 40px; }
+.made-by { margin-top: 64px; font-size: 11px; color: var(--text-dim); opacity: 0.35; letter-spacing: 1px; }
 
 /* ---------- ② 表单页 ---------- */
 .form-box {
